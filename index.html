@@ -1,0 +1,2098 @@
+<!DOCTYPE html>
+<html lang="mn">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
+<title>8Б анги | 48-р сургууль</title>
+
+
+<style>
+
+/* =====================================================
+   ҮНДСЭН
+===================================================== */
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Arial,sans-serif;
+    background:#f5f8ff;
+    color:#333;
+}
+
+
+/* =====================================================
+   NAV
+===================================================== */
+
+nav{
+    position:sticky;
+    top:0;
+    z-index:1000;
+
+    background:
+        linear-gradient(
+            90deg,
+            #4776e6,
+            #7c5cff
+        );
+
+    padding:14px 30px;
+
+    box-shadow:
+        0 3px 15px rgba(0,0,0,.15);
+}
+
+.nav-container{
+    max-width:1200px;
+    margin:auto;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    gap:20px;
+}
+
+.logo{
+    color:white;
+    font-size:22px;
+    font-weight:bold;
+    white-space:nowrap;
+}
+
+.nav-links{
+    display:flex;
+    gap:20px;
+
+    list-style:none;
+
+    flex-wrap:wrap;
+    justify-content:center;
+}
+
+.nav-links a{
+    color:white;
+    text-decoration:none;
+
+    font-weight:bold;
+    font-size:14px;
+}
+
+.nav-links a:hover{
+    opacity:.7;
+}
+
+
+/* =====================================================
+   HERO
+===================================================== */
+
+.hero{
+    min-height:520px;
+
+    background:
+        linear-gradient(
+            rgba(50,80,180,.35),
+            rgba(50,80,180,.45)
+        ),
+        url("cover.jpg") center/cover no-repeat;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    text-align:center;
+
+    padding:40px 20px;
+}
+
+.hero-content{
+    background:rgba(255,255,255,.9);
+
+    padding:40px;
+
+    border-radius:30px;
+
+    max-width:800px;
+
+    box-shadow:
+        0 15px 40px rgba(0,0,0,.15);
+}
+
+.hero h1{
+    font-size:48px;
+
+    color:#405de6;
+
+    margin-bottom:15px;
+}
+
+.hero p{
+    font-size:20px;
+
+    color:#555;
+
+    margin-bottom:25px;
+}
+
+
+/* =====================================================
+   SEARCH
+===================================================== */
+
+.search-box{
+    max-width:650px;
+
+    margin:35px auto;
+
+    display:flex;
+
+    gap:10px;
+}
+
+.search-box input{
+    flex:1;
+
+    padding:16px 20px;
+
+    border:2px solid #d9defa;
+
+    border-radius:30px;
+
+    font-size:16px;
+
+    outline:none;
+}
+
+.search-box input:focus{
+    border-color:#6878ed;
+}
+
+.search-box button{
+    border:none;
+
+    background:
+        linear-gradient(
+            90deg,
+            #4776e6,
+            #7c5cff
+        );
+
+    color:white;
+
+    padding:0 25px;
+
+    border-radius:30px;
+
+    font-size:16px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+}
+
+
+/* =====================================================
+   COMMON
+===================================================== */
+
+section{
+    padding:70px 20px;
+}
+
+.container{
+    max-width:1200px;
+    margin:auto;
+}
+
+.section-title{
+    text-align:center;
+
+    color:#405de6;
+
+    font-size:32px;
+
+    margin-bottom:35px;
+}
+
+
+/* =====================================================
+   STATS
+===================================================== */
+
+.stats{
+    display:grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    gap:20px;
+
+    margin-bottom:50px;
+}
+
+.stat{
+    background:white;
+
+    padding:25px;
+
+    border-radius:20px;
+
+    text-align:center;
+
+    box-shadow:
+        0 8px 25px rgba(60,80,150,.1);
+}
+
+.stat h2{
+    font-size:38px;
+
+    color:#5c6ee6;
+}
+
+.stat p{
+    margin-top:8px;
+
+    color:#777;
+}
+
+
+/* =====================================================
+   СУРАГЧДЫН GRID
+===================================================== */
+
+.students-grid{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    gap:20px;
+}
+
+
+/* =====================================================
+   СУРАГЧИЙН КАРТ
+===================================================== */
+
+.student-card{
+
+    background:white;
+
+    border-radius:25px;
+
+    padding:12px;
+
+    text-align:center;
+
+    box-shadow:
+        0 8px 25px rgba(60,80,150,.12);
+
+    cursor:pointer;
+
+    transition:.3s;
+
+    border:2px solid transparent;
+
+    overflow:hidden;
+}
+
+
+.student-card:hover{
+
+    transform:translateY(-7px);
+
+    border-color:#8b95f5;
+
+    box-shadow:
+        0 15px 30px rgba(70,80,180,.18);
+}
+
+
+/* =====================================================
+   ХҮҮХДИЙН ЗУРАГ
+   БҮТЭН ӨРГӨНӨӨР ДҮҮРГЭНЭ
+===================================================== */
+
+.student-card img{
+
+    display:block;
+
+    width:100%;
+
+    height:260px;
+
+    object-fit:contain;
+
+    border-radius:20px;
+
+    border:none;
+
+    margin:0 auto 12px auto;
+
+    background:#f1f4ff;
+}
+
+
+/* =====================================================
+   ХҮҮХДИЙН НЭР
+===================================================== */
+
+.student-card h3{
+
+    font-size:19px;
+
+    color:#405de6;
+
+    margin:8px 0 6px 0;
+
+    font-weight:bold;
+}
+
+
+/* =====================================================
+   РЕГИСТР
+===================================================== */
+
+.click-note{
+
+    margin-top:8px;
+
+    margin-bottom:8px;
+
+    font-size:14px;
+
+    color:#8a8fa8;
+}
+
+
+/* =====================================================
+   MEMORIES
+===================================================== */
+
+.memories{
+
+    background:#eef3ff;
+}
+
+.memory-tabs{
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:10px;
+
+    margin-bottom:30px;
+
+    flex-wrap:wrap;
+}
+
+.memory-tabs button{
+
+    padding:12px 25px;
+
+    border:none;
+
+    border-radius:25px;
+
+    background:white;
+
+    color:#5363d9;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    transition:.3s;
+}
+
+.memory-tabs button:hover{
+
+    transform:translateY(-2px);
+}
+
+.memory-tabs button.active{
+
+    background:#5363d9;
+
+    color:white;
+}
+
+
+/* =====================================================
+   MEMORY GRID
+===================================================== */
+
+.memory-grid{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    gap:20px;
+
+    align-items:start;
+}
+
+.memory-grid img,
+.memory-grid video{
+
+    width:100%;
+
+    height:220px;
+
+    object-fit:cover;
+
+    border-radius:18px;
+
+    background:white;
+
+    box-shadow:
+        0 8px 20px rgba(0,0,0,.1);
+
+    cursor:pointer;
+
+    transition:.3s;
+}
+
+.memory-grid img:hover,
+.memory-grid video:hover{
+
+    transform:scale(1.03);
+
+    box-shadow:
+        0 12px 28px rgba(0,0,0,.18);
+}
+
+.memory-grid video{
+
+    object-fit:cover;
+
+    background:#111;
+}
+
+
+/* =====================================================
+   IMAGE MODAL
+===================================================== */
+
+.image-modal{
+
+    display:none;
+
+    position:fixed;
+
+    z-index:9999;
+
+    left:0;
+    top:0;
+
+    width:100%;
+    height:100%;
+
+    background:
+        rgba(0,0,0,.85);
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:30px;
+}
+
+.image-modal.show{
+
+    display:flex;
+}
+
+.image-modal img{
+
+    max-width:90%;
+
+    max-height:90%;
+
+    object-fit:contain;
+
+    border-radius:15px;
+
+    box-shadow:
+        0 15px 50px rgba(0,0,0,.5);
+}
+
+.close-modal{
+
+    position:absolute;
+
+    top:20px;
+    right:30px;
+
+    color:white;
+
+    font-size:45px;
+
+    cursor:pointer;
+
+    font-weight:bold;
+}
+
+
+/* =====================================================
+   GOAL
+===================================================== */
+
+.goal-box{
+
+    background:white;
+
+    padding:35px;
+
+    border-radius:25px;
+
+    box-shadow:
+        0 10px 30px rgba(60,80,150,.1);
+
+    line-height:1.8;
+}
+
+.goal-box ul{
+
+    padding-left:25px;
+}
+
+.goal-box li{
+
+    margin:12px 0;
+}
+
+
+/* =====================================================
+   PARENTS
+===================================================== */
+
+.parents-box{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(2,1fr);
+
+    gap:25px;
+}
+
+.info-card{
+
+    background:white;
+
+    padding:30px;
+
+    border-radius:25px;
+
+    box-shadow:
+        0 10px 30px rgba(60,80,150,.1);
+}
+
+.info-card h3{
+
+    color:#5363d9;
+
+    margin-bottom:15px;
+}
+
+
+/* =====================================================
+   COMMENTS
+===================================================== */
+
+.comments-section{
+
+    background:
+        linear-gradient(
+            135deg,
+            #eef3ff,
+            #f9f0ff
+        );
+}
+
+.comments-box{
+
+    max-width:800px;
+
+    margin:auto;
+
+    background:white;
+
+    padding:35px;
+
+    border-radius:28px;
+
+    box-shadow:
+        0 10px 30px rgba(60,80,150,.12);
+}
+
+.comments-intro{
+
+    text-align:center;
+
+    color:#777;
+
+    margin-bottom:25px;
+}
+
+.comment-form input,
+.comment-form textarea{
+
+    width:100%;
+
+    padding:14px 18px;
+
+    margin-bottom:12px;
+
+    border:2px solid #e1e4f6;
+
+    border-radius:15px;
+
+    outline:none;
+
+    font-size:15px;
+
+    font-family:Arial,sans-serif;
+}
+
+.comment-form textarea{
+
+    min-height:110px;
+
+    resize:vertical;
+}
+
+.comment-form button{
+
+    width:100%;
+
+    padding:14px;
+
+    border:none;
+
+    border-radius:20px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #4776e6,
+            #7c5cff
+        );
+
+    color:white;
+
+    font-size:16px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+}
+
+.comment{
+
+    background:#f7f8ff;
+
+    margin-top:18px;
+
+    padding:18px;
+
+    border-radius:18px;
+
+    border-left:5px solid #6878ed;
+}
+
+.comment-name{
+
+    color:#5363d9;
+
+    font-weight:bold;
+
+    margin-bottom:7px;
+}
+
+.comment-text{
+
+    line-height:1.6;
+}
+
+.comment-date{
+
+    color:#aaa;
+
+    font-size:12px;
+
+    margin-top:8px;
+}
+
+
+/* =====================================================
+   CONTACT
+===================================================== */
+
+.contact{
+
+    background:#eef3ff;
+}
+
+.contact-box{
+
+    text-align:center;
+
+    background:white;
+
+    padding:40px;
+
+    border-radius:25px;
+
+    max-width:700px;
+
+    margin:auto;
+
+    box-shadow:
+        0 10px 30px rgba(60,80,150,.1);
+}
+
+.contact-box p{
+
+    margin:10px 0;
+}
+
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+footer{
+
+    background:#343c85;
+
+    color:white;
+
+    text-align:center;
+
+    padding:30px 20px;
+}
+
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media(max-width:1100px){
+
+    .students-grid{
+
+        grid-template-columns:
+            repeat(3,1fr);
+    }
+
+    .memory-grid{
+
+        grid-template-columns:
+            repeat(3,1fr);
+    }
+}
+
+
+@media(max-width:800px){
+
+    .students-grid{
+
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+    .memory-grid{
+
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+    .stats{
+
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+    .parents-box{
+
+        grid-template-columns:1fr;
+    }
+
+    .hero h1{
+
+        font-size:35px;
+    }
+
+    .student-card img{
+
+        height:230px;
+    }
+}
+
+
+@media(max-width:500px){
+
+    .students-grid{
+
+        grid-template-columns:
+            repeat(2,1fr);
+
+        gap:10px;
+    }
+
+    .student-card{
+
+        padding:8px;
+
+        border-radius:18px;
+    }
+
+    .student-card img{
+
+        height:180px;
+
+        border-radius:14px;
+    }
+
+    .student-card h3{
+
+        font-size:15px;
+    }
+
+    .click-note{
+
+        font-size:11px;
+    }
+
+    .search-box{
+
+        flex-direction:column;
+    }
+
+    .search-box button{
+
+        height:48px;
+    }
+
+    .memory-grid{
+
+        grid-template-columns:1fr;
+    }
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     NAV
+===================================================== -->
+
+<nav>
+
+<div class="nav-container">
+
+<div class="logo">
+🎓 8Б АНГИ
+</div>
+
+<ul class="nav-links">
+
+<li>
+<a href="#home">Нүүр</a>
+</li>
+
+<li>
+<a href="#students">Манай анги</a>
+</li>
+
+<li>
+<a href="#memories">📸 Дурсамж</a>
+</li>
+
+<li>
+<a href="#goal">Зорилго</a>
+</li>
+
+<li>
+<a href="#comments">💬 Сэтгэгдэл</a>
+</li>
+
+<li>
+<a href="#parents">Эцэг эх</a>
+</li>
+
+<li>
+<a href="#contact">Холбоо барих</a>
+</li>
+
+</ul>
+
+</div>
+
+</nav>
+
+
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+
+<section class="hero" id="home">
+
+<div class="hero-content">
+
+<h1>
+8Б АНГИ 💙
+</h1>
+
+<p>
+Бид хамтдаа суралцаж, хөгжиж, амжилт бүтээнэ.
+</p>
+
+
+<div class="search-box">
+
+<input
+type="text"
+id="registerInput"
+placeholder="Регистрийн дугаараа оруулна уу..."
+autocomplete="off"
+>
+
+<button onclick="searchStudent()">
+🔍 Хайх
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+     STUDENTS
+===================================================== -->
+
+<section id="students">
+
+<div class="container">
+
+<h2 class="section-title">
+👩‍🎓 Манай 8Б анги
+</h2>
+
+
+<div class="stats">
+
+<div class="stat">
+
+<h2>40</h2>
+
+<p>
+Нийт сурагч
+</p>
+
+</div>
+
+
+<div class="stat">
+
+<h2>17</h2>
+
+<p>
+Охид
+</p>
+
+</div>
+
+
+<div class="stat">
+
+<h2>23</h2>
+
+<p>
+Хөвгүүд
+</p>
+
+</div>
+
+
+<div class="stat">
+
+<h2>1</h2>
+
+<p>
+Багш
+</p>
+
+</div>
+
+</div>
+
+
+<div
+class="students-grid"
+id="studentsGrid">
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+     MEMORIES
+===================================================== -->
+
+<section
+class="memories"
+id="memories">
+
+<div class="container">
+
+<h2 class="section-title">
+📸 Бидний дурсамж
+</h2>
+
+
+<div class="memory-tabs">
+
+<button
+class="active"
+onclick="showMemories(6,this)">
+6-р анги
+</button>
+
+<button
+onclick="showMemories(7,this)">
+7-р анги
+</button>
+
+<button
+onclick="showMemories(8,this)">
+8-р анги
+</button>
+
+</div>
+
+
+<div
+class="memory-grid"
+id="memoryGrid">
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+     IMAGE MODAL
+===================================================== -->
+
+<div
+class="image-modal"
+id="imageModal"
+onclick="closeImageModal()"
+>
+
+<span
+class="close-modal"
+onclick="closeImageModal()">
+×
+</span>
+
+<img
+id="modalImage"
+src=""
+alt="Томруулсан зураг"
+onclick="event.stopPropagation()"
+>
+
+</div>
+
+
+
+<!-- =====================================================
+     GOAL
+===================================================== -->
+
+<section id="goal">
+
+<div class="container">
+
+<h2 class="section-title">
+🎯 Манай ангийн зорилго
+</h2>
+
+
+<div class="goal-box">
+
+<ul>
+
+<li>
+🤝 Эв нэгдэлтэй, нэг нэгнээ дэмждэг хамт олон болох
+</li>
+
+<li>
+📚 Сурлагын амжилтаа тогтмол ахиулах
+</li>
+
+<li>
+🌍 Дэлхийн иргэн байх мэдлэг, чадвар эзэмших
+</li>
+
+<li>
+💡 Шинийг санаачилж, бүтээлчээр сэтгэх
+</li>
+
+<li>
+💰 Мөнгө санхүүгээ зөв төлөвлөж сурах
+</li>
+
+<li>
+🌱 Өөрийгөө хөгжүүлж, жилийн хувийн зорилгоо биелүүлэх
+</li>
+
+</ul>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+     COMMENTS
+===================================================== -->
+
+<section
+class="comments-section"
+id="comments">
+
+<div class="container">
+
+<h2 class="section-title">
+💬 Манай 8Б-д сэтгэгдэл үлдээх
+</h2>
+
+
+<div class="comments-box">
+
+<p class="comments-intro">
+Бидний анги, хүүхдүүдийн амжилт,
+дурсамжийн талаар сайхан үг, урам өгөх
+сэтгэгдлээ үлдээгээрэй 💙
+</p>
+
+
+<div class="comment-form">
+
+<input
+type="text"
+id="commentName"
+placeholder="Таны нэр"
+maxlength="30"
+>
+
+
+<textarea
+id="commentText"
+placeholder="Сэтгэгдлээ бичнэ үү..."
+maxlength="300"
+></textarea>
+
+
+<button onclick="addComment()">
+💬 Сэтгэгдэл үлдээх
+</button>
+
+</div>
+
+
+<div id="commentsList">
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+     PARENTS
+===================================================== -->
+
+<section id="parents">
+
+<div class="container">
+
+<h2 class="section-title">
+👨‍👩‍👧 Эцэг эхчүүд
+</h2>
+
+
+<div class="parents-box">
+
+
+<div class="info-card">
+
+<h3>
+💙 Хамтын ажиллагаа
+</h3>
+
+<p>
+Эцэг эх, багш, сурагч хамтран ажилласнаар
+хүүхдийн хөгжил, сурлагын амжилтыг дэмжинэ.
+</p>
+
+</div>
+
+
+<div class="info-card">
+
+<h3>
+📱 Дижитал орчин
+</h3>
+
+<p>
+Хүүхдийн цахим хэрэглээ, сошиал орчин,
+дэлгэцийн цагт анхаарч, зөв дадал хэвшүүлэхэд
+дэмжлэг үзүүлнэ.
+</p>
+
+</div>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+     CONTACT
+===================================================== -->
+
+<section
+class="contact"
+id="contact">
+
+<div class="container">
+
+<h2 class="section-title">
+📞 Холбоо барих
+</h2>
+
+
+<div class="contact-box">
+
+<p>
+🏫
+<b>
+Нийслэлийн ерөнхий боловсролын 48-р сургууль
+</b>
+</p>
+
+<p>
+👩‍🏫
+Мэдээллийн технологийн багш:
+<b>
+Л. Батзаяа
+</b>
+</p>
+
+<p>
+🎓 8Б анги
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer>
+
+<p>
+© 2026 | 8Б анги | 48-р сургууль 💙
+</p>
+
+</footer>
+
+
+
+<script>
+
+
+/* =====================================================
+   40 СУРАГЧ
+===================================================== */
+
+const students = [
+
+{id:1,name:"Б.Аззаяа",register:"УЗ13280665"},
+
+{id:2,name:"Э.Аззаяа",register:"УЛ13213163"},
+
+{id:3,name:"М.Амарзаяа",register:"УА13260181"},
+
+{id:4,name:"П.Амин-Эрдэнэ",register:"УЗ13272401"},
+
+{id:5,name:"А.Аминсүлд",register:"УЖ13241691"},
+
+{id:6,name:"Б.Ачлалтэрдэнэ",register:"УК13222295"},
+
+{id:7,name:"М.Батхишиг",register:"УО13321961"},
+
+{id:8,name:"Л.Билгүүн",register:"УА13242952"},
+
+{id:9,name:"Б.Гүнтэнгис",register:"РЕ13271015"},
+
+{id:10,name:"Б.Дөлгөөн",register:"УФ13301045"},
+
+{id:11,name:"Э.Мандахнар",register:"УУ13271964"},
+
+{id:12,name:"Э.Марал",register:"УК13210587"},
+
+{id:13,name:"Ч.Минж",register:"УЛ13291467"},
+
+{id:14,name:"А.Мөнхтөр",register:"УЦ13240115"},
+
+{id:15,name:"Б.Мөрөн",register:"УЦ13251315"},
+
+{id:16,name:"Д.Намуундарь",register:"УК13261523"},
+
+{id:17,name:"Б.Нандин-Эрдэнэ",register:"УА13302482"},
+
+{id:18,name:"Р.Нандинбилэг",register:"УХ13322827"},
+
+{id:19,name:"Н.Номинжин",register:"УК13282127"},
+
+{id:20,name:"Ж.Оразалы",register:"УК13271076"},
+
+{id:21,name:"Т.Отгонбаатар",register:"УА13220490"},
+
+{id:22,name:"Т.Руслан",register:"УЛ13252193"},
+
+{id:23,name:"Б.Сайхансувд",register:"АИ13242901"},
+
+{id:24,name:"М.Төгсбаатар",register:"УЛ13282935"},
+
+{id:25,name:"Б.Төгсбилиг",register:"УА12301631"},
+
+{id:26,name:"А.Түвшинбаатар",register:"УВ13291896"},
+
+{id:27,name:"О.Түвшинжаргал",register:"УА13282997"},
+
+{id:28,name:"Ц.Түвшинтулга",register:"УТ13241933"},
+
+{id:29,name:"Н.Тэмүүлэн",register:"УЦ13231333"},
+
+{id:30,name:"Д.Тэнүүн",register:"МУ13290355"},
+
+{id:31,name:"Э.Тэнүүн",register:"УХ13241804"},
+
+{id:32,name:"Б.Хад",register:"УЧ13281294"},
+
+{id:33,name:"Л.Халиун",register:"УК13250619"},
+
+{id:34,name:"А.Хантай",register:"НР13231416"},
+
+{id:35,name:"Ш.Хулан",register:"УК13282623"},
+
+{id:36,name:"Ба.Цэлмэг",register:"ЩК13240213"},
+
+{id:37,name:"Би.Цэлмэг",register:"УЦ13281015"},
+
+{id:38,name:"А.Шүүдэр",register:"УК13301925"},
+
+{id:39,name:"Т.Энэрэл",register:"УХ13240105"},
+
+{id:40,name:"Н.Эрдэнэ",register:"УК13220350"}
+
+];
+
+
+
+/* =====================================================
+   СУРАГЧДЫН КАРТ
+===================================================== */
+
+function renderStudents(){
+
+    const grid =
+        document.getElementById(
+            "studentsGrid"
+        );
+
+    grid.innerHTML = "";
+
+
+    students.forEach(student => {
+
+        const card =
+            document.createElement("div");
+
+        card.className =
+            "student-card";
+
+
+        card.onclick = function(){
+
+            const entered =
+                prompt(
+                    "🔐 " +
+                    student.name +
+                    "\n\nЭнэ сурагчийн мэдээллийг харахын тулд регистрийн дугаарыг оруулна уу:"
+                );
+
+
+            if(entered === null){
+                return;
+            }
+
+
+            const input =
+                entered
+                .trim()
+                .toUpperCase();
+
+
+            if(input === ""){
+
+                alert(
+                    "⚠️ Регистрийн дугаараа оруулна уу."
+                );
+
+                return;
+            }
+
+
+            if(
+                input ===
+                student.register.toUpperCase()
+            ){
+
+                openProfile(student);
+
+            }
+
+            else{
+
+                alert(
+                    "❌ Регистрийн дугаар буруу байна."
+                );
+
+            }
+
+        };
+
+
+        card.innerHTML = `
+
+            <img
+                src="students/${student.id}nuur.png"
+                alt="${student.name}"
+                onerror="
+                    if(this.dataset.jpgTried !== 'true'){
+                        this.dataset.jpgTried = 'true';
+                        this.src = 'students/${student.id}nuur.jpg';
+                    }else{
+                        this.style.opacity='0.3';
+                    }
+                "
+            >
+
+            <h3>
+                ${student.name}
+            </h3>
+
+            <div class="click-note">
+                🔒 Регистрээр нэвтрэх
+            </div>
+
+        `;
+
+
+        grid.appendChild(card);
+
+    });
+
+}
+
+
+
+/* =====================================================
+   PROFILE
+===================================================== */
+
+function openProfile(student){
+
+    const url =
+        "profile.html?id=" +
+        encodeURIComponent(student.id) +
+        "&key=" +
+        encodeURIComponent(student.register);
+
+    window.location.href = url;
+
+}
+
+
+
+/* =====================================================
+   РЕГИСТРЭЭР ХАЙХ
+===================================================== */
+
+function searchStudent(){
+
+    const input =
+        document
+        .getElementById("registerInput")
+        .value
+        .trim()
+        .toUpperCase();
+
+
+    if(!input){
+
+        alert(
+            "⚠️ Регистрийн дугаараа оруулна уу."
+        );
+
+        return;
+    }
+
+
+    const student =
+        students.find(
+            s =>
+            s.register.toUpperCase() === input
+        );
+
+
+    if(!student){
+
+        alert(
+            "❌ Ийм регистрийн дугаартай сурагч олдсонгүй."
+        );
+
+        return;
+    }
+
+
+    openProfile(student);
+
+}
+
+
+
+/* =====================================================
+   ENTER
+===================================================== */
+
+document
+.getElementById("registerInput")
+.addEventListener(
+    "keydown",
+    function(e){
+
+        if(e.key === "Enter"){
+
+            searchStudent();
+
+        }
+
+    }
+);
+
+
+
+/* =====================================================
+   ДУРСАМЖ
+===================================================== */
+
+function showMemories(grade,button){
+
+    document
+    .querySelectorAll(
+        ".memory-tabs button"
+    )
+    .forEach(btn => {
+
+        btn.classList.remove("active");
+
+    });
+
+
+    if(button){
+
+        button.classList.add("active");
+
+    }
+
+
+    const grid =
+        document.getElementById(
+            "memoryGrid"
+        );
+
+
+    grid.innerHTML = "";
+
+
+    const startNumber =
+        grade * 100 + 1;
+
+
+    const endNumber =
+        grade * 100 + 99;
+
+
+    for(
+        let number = startNumber;
+        number <= endNumber;
+        number++
+    ){
+
+        const lastTwo =
+            number % 100;
+
+
+        if(
+            lastTwo >= 1 &&
+            lastTwo <= 10
+        ){
+
+            const video =
+                document.createElement("video");
+
+
+            video.src =
+                `memories/${grade}/${number}.mp4`;
+
+            video.controls = true;
+
+            video.preload =
+                "metadata";
+
+            video.playsInline =
+                true;
+
+            video.className =
+                "memory-video";
+
+            video.title =
+                `${grade}-р ангийн дурсамж`;
+
+
+            video.onerror =
+                function(){
+
+                    this.remove();
+
+                };
+
+
+            grid.appendChild(video);
+
+        }
+
+        else{
+const img = 
+    document.createElement("img");
+
+
+img.src = 
+    `memories/${grade}/${number}.png`;
+
+
+img.alt = 
+    `${grade}-р ангийн дурсамж`;
+
+
+img.loading = 
+    "lazy";
+
+
+img.onerror = 
+    function(){
+
+        if(this.dataset.jpgTried !== "true"){
+
+            this.dataset.jpgTried = "true";
+
+            this.src = 
+                `memories/${grade}/${number}.jpg`;
+
+        }
+        else{
+
+            this.remove();
+
+        }
+
+    };
+
+
+            img.onclick =
+                function(){
+
+                    openImageModal(
+                        this.src
+                    );
+
+                };
+
+
+            grid.appendChild(img);
+
+        }
+
+    }
+
+}
+
+
+
+/* =====================================================
+   ЗУРАГ ТОМРУУЛАХ
+===================================================== */
+
+function openImageModal(src){
+
+    const modal =
+        document.getElementById(
+            "imageModal"
+        );
+
+
+    const image =
+        document.getElementById(
+            "modalImage"
+        );
+
+
+    image.src =
+        src;
+
+
+    modal.classList.add(
+        "show"
+    );
+
+}
+
+
+
+/* =====================================================
+   MODAL ХААХ
+===================================================== */
+
+function closeImageModal(){
+
+    const modal =
+        document.getElementById(
+            "imageModal"
+        );
+
+
+    modal.classList.remove(
+        "show"
+    );
+
+
+    document
+    .getElementById(
+        "modalImage"
+    )
+    .src = "";
+
+}
+
+
+
+/* =====================================================
+   ESC
+===================================================== */
+
+document.addEventListener(
+    "keydown",
+    function(e){
+
+        if(
+            e.key === "Escape"
+        ){
+
+            closeImageModal();
+
+        }
+
+    }
+);
+
+
+
+/* =====================================================
+   СЭТГЭГДЭЛ
+===================================================== */
+
+function addComment(){
+
+    const name =
+        document
+        .getElementById("commentName")
+        .value
+        .trim();
+
+
+    const text =
+        document
+        .getElementById("commentText")
+        .value
+        .trim();
+
+
+    if(!name){
+
+        alert(
+            "⚠️ Нэрээ оруулна уу."
+        );
+
+        return;
+    }
+
+
+    if(!text){
+
+        alert(
+            "⚠️ Сэтгэгдлээ бичнэ үү."
+        );
+
+        return;
+    }
+
+
+    const comments =
+        JSON.parse(
+            localStorage.getItem(
+                "class8BComments"
+            ) || "[]"
+        );
+
+
+    comments.push({
+
+        name:name,
+
+        text:text,
+
+        date:
+            new Date()
+            .toLocaleString("mn-MN")
+
+    });
+
+
+    localStorage.setItem(
+        "class8BComments",
+        JSON.stringify(comments)
+    );
+
+
+    document
+    .getElementById("commentName")
+    .value = "";
+
+
+    document
+    .getElementById("commentText")
+    .value = "";
+
+
+    showComments();
+
+}
+
+
+
+/* =====================================================
+   СЭТГЭГДЭЛ ХАРУУЛАХ
+===================================================== */
+
+function showComments(){
+
+    const list =
+        document.getElementById(
+            "commentsList"
+        );
+
+
+    const comments =
+        JSON.parse(
+            localStorage.getItem(
+                "class8BComments"
+            ) || "[]"
+        );
+
+
+    list.innerHTML = "";
+
+
+    if(comments.length === 0){
+
+        list.innerHTML = `
+
+            <p style="
+                text-align:center;
+                color:#aaa;
+                margin-top:25px;
+            ">
+
+                💭 Одоогоор сэтгэгдэл алга байна.
+
+            </p>
+
+        `;
+
+        return;
+    }
+
+
+    comments
+    .slice()
+    .reverse()
+    .forEach(comment => {
+
+        const div =
+            document.createElement("div");
+
+
+        div.className =
+            "comment";
+
+
+        div.innerHTML = `
+
+            <div class="comment-name">
+                💙 ${escapeHTML(comment.name)}
+            </div>
+
+            <div class="comment-text">
+                ${escapeHTML(comment.text)}
+            </div>
+
+            <div class="comment-date">
+                ${escapeHTML(comment.date)}
+            </div>
+
+        `;
+
+
+        list.appendChild(div);
+
+    });
+
+}
+
+
+
+/* =====================================================
+   АЮУЛГҮЙ ТЕКСТ
+===================================================== */
+
+function escapeHTML(text){
+
+    const div =
+        document.createElement("div");
+
+
+    div.textContent =
+        text;
+
+
+    return div.innerHTML;
+
+}
+
+
+
+/* =====================================================
+   PAGE LOAD
+===================================================== */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function(){
+
+        renderStudents();
+
+
+        const firstButton =
+            document.querySelector(
+                ".memory-tabs button"
+            );
+
+
+        showMemories(
+            6,
+            firstButton
+        );
+
+
+        showComments();
+
+    }
+);
+
+</script>
+
+
+</body>
+
+</html>

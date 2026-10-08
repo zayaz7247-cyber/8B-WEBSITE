@@ -1,0 +1,2146 @@
+```html
+<!DOCTYPE html>
+<html lang="mn">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>8Б анги | Сурагчийн профайл</title>
+
+
+<style>
+
+/* =========================================
+   ҮНДСЭН
+========================================= */
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+
+    font-family:Arial, sans-serif;
+
+    background:
+        linear-gradient(
+            135deg,
+            #f5f0ff,
+            #eef7ff,
+            #fff4fb
+        );
+
+    color:#4b4260;
+
+    min-height:100vh;
+
+    position:relative;
+
+    overflow-x:hidden;
+}
+
+
+/* =========================================
+   ХӨДӨЛГӨӨНТ BACKGROUND
+========================================= */
+
+body::before,
+body::after{
+
+    content:"";
+
+    position:fixed;
+
+    z-index:-1;
+
+    pointer-events:none;
+
+    border-radius:50%;
+}
+
+
+/* Зүүн дээд гэрэлтэх бөмбөлөг */
+
+body::before{
+
+    width:420px;
+    height:420px;
+
+    top:-120px;
+    left:-120px;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(196,168,255,.35) 0%,
+            rgba(196,168,255,.12) 45%,
+            transparent 70%
+        );
+
+    animation:
+        floatingBubble 8s ease-in-out infinite;
+}
+
+
+/* Баруун доод гэрэлтэх бөмбөлөг */
+
+body::after{
+
+    width:500px;
+    height:500px;
+
+    right:-180px;
+    bottom:-180px;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(180,225,255,.35) 0%,
+            rgba(255,190,230,.15) 45%,
+            transparent 70%
+        );
+
+    animation:
+        floatingBubble2 10s ease-in-out infinite;
+}
+
+
+@keyframes floatingBubble{
+
+    0%,100%{
+
+        transform:
+            translate(0,0)
+            scale(1);
+
+    }
+
+    50%{
+
+        transform:
+            translate(80px,50px)
+            scale(1.15);
+
+    }
+
+}
+
+
+@keyframes floatingBubble2{
+
+    0%,100%{
+
+        transform:
+            translate(0,0)
+            scale(1);
+
+    }
+
+    50%{
+
+        transform:
+            translate(-70px,-60px)
+            scale(1.12);
+
+    }
+
+}
+
+
+/* =========================================
+   ХӨВӨГЧ ЗҮРХ, ОД
+========================================= */
+
+.floating-decoration{
+
+    position:fixed;
+
+    z-index:-1;
+
+    pointer-events:none;
+
+    opacity:.55;
+
+    animation:
+        floatUp linear infinite;
+
+}
+
+
+@keyframes floatUp{
+
+    0%{
+
+        transform:
+            translateY(110vh)
+            rotate(0deg)
+            scale(.7);
+
+        opacity:0;
+
+    }
+
+    10%{
+
+        opacity:.55;
+
+    }
+
+    50%{
+
+        transform:
+            translateY(50vh)
+            rotate(120deg)
+            scale(1);
+
+    }
+
+    90%{
+
+        opacity:.55;
+
+    }
+
+    100%{
+
+        transform:
+            translateY(-15vh)
+            rotate(300deg)
+            scale(.7);
+
+        opacity:0;
+
+    }
+
+}
+
+
+/* =========================================
+   NAVBAR
+========================================= */
+
+.navbar{
+
+    position:sticky;
+
+    top:0;
+
+    z-index:100;
+
+    background:
+        rgba(120,95,180,.95);
+
+    padding:15px 25px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    color:white;
+
+    box-shadow:
+        0 5px 20px
+        rgba(80,70,130,.2);
+}
+
+
+.navbar a{
+
+    color:white;
+
+    text-decoration:none;
+
+    font-weight:bold;
+
+}
+
+
+/* =========================================
+   CONTAINER
+========================================= */
+
+.container{
+
+    width:92%;
+
+    max-width:1000px;
+
+    margin:35px auto;
+
+}
+
+
+/* =========================================
+   CARD
+========================================= */
+
+.card{
+
+    background:
+        rgba(255,255,255,.94);
+
+    border-radius:30px;
+
+    padding:30px;
+
+    margin-bottom:25px;
+
+    box-shadow:
+        0 15px 40px
+        rgba(80,70,130,.12);
+
+}
+
+
+/* =========================================
+   СУРАГЧИЙН HEADER
+========================================= */
+
+.student-header{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:25px;
+
+    padding:25px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #f7f1ff,
+            #eef7ff
+        );
+
+    border-radius:25px;
+
+}
+
+
+/* =========================================
+   НҮҮРНИЙ ЗУРАГ
+========================================= */
+
+.profile-photo{
+
+    width:150px;
+
+    height:150px;
+
+    flex-shrink:0;
+
+    object-fit:cover;
+
+    border-radius:50%;
+
+    border:7px solid white;
+
+    box-shadow:
+        0 10px 30px
+        rgba(80,70,130,.22);
+
+    filter:
+        contrast(1.05)
+        saturate(1.05)
+        brightness(1.02);
+
+}
+
+
+/* =========================================
+   НЭРНИЙ ХЭСЭГ
+========================================= */
+
+.student-text{
+
+    flex:1;
+
+}
+
+
+.greeting{
+
+    font-size:19px;
+
+    color:#8b819c;
+
+    margin-bottom:8px;
+
+}
+
+
+.student-name{
+
+    font-size:34px;
+
+    color:#7656a8;
+
+    font-weight:bold;
+
+    line-height:1.25;
+
+}
+
+
+.student-school{
+
+    margin-top:10px;
+
+    font-size:16px;
+
+    color:#8b819c;
+
+}
+
+
+/* =========================================
+   SECTION TITLE
+========================================= */
+
+.section-title{
+
+    text-align:center;
+
+    color:#7656a8;
+
+    font-size:28px;
+
+    margin-bottom:8px;
+
+}
+
+
+.section-subtitle{
+
+    text-align:center;
+
+    color:#8b819c;
+
+    margin-bottom:25px;
+
+}
+
+
+/* =========================================
+   МЭРГЭЖЛИЙН ЗУРАГ
+========================================= */
+
+.profession-box{
+
+    text-align:center;
+
+}
+
+
+.profession-image{
+
+    width:500px;
+
+    height:380px;
+
+    max-width:100%;
+
+    object-fit:contain;
+
+    display:block;
+
+    margin:auto;
+
+    border-radius:28px;
+
+    background:#f4efff;
+
+    box-shadow:
+        0 15px 40px
+        rgba(100,80,150,.2);
+
+    border:6px solid white;
+
+    filter:
+        contrast(1.08)
+        saturate(1.08)
+        brightness(1.03);
+
+    cursor:pointer;
+
+    transition:.25s;
+
+}
+
+
+.profession-image:hover{
+
+    transform:scale(1.02);
+
+}
+
+
+/* =========================================
+   МЭРГЭЖЛИЙН НЭР
+========================================= */
+
+.profession-caption{
+
+    margin-top:15px;
+
+    font-size:24px;
+
+    font-weight:bold;
+
+    color:#66508d;
+
+}
+
+
+/* =========================================
+   GALLERY
+========================================= */
+
+.gallery-title{
+
+    text-align:center;
+
+    color:#7656a8;
+
+    font-size:28px;
+
+    margin-bottom:8px;
+
+}
+
+
+.gallery-subtitle{
+
+    text-align:center;
+
+    color:#8b819c;
+
+    margin-bottom:25px;
+
+}
+
+
+.gallery{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    gap:16px;
+
+}
+
+
+.gallery-item{
+
+    width:100%;
+
+    aspect-ratio:1/1;
+
+    object-fit:cover;
+
+    border-radius:20px;
+
+    border:4px solid white;
+
+    background:#f2edff;
+
+    box-shadow:
+        0 8px 20px
+        rgba(80,70,120,.1);
+
+    cursor:pointer;
+
+    display:block;
+
+    transition:.25s;
+
+}
+
+
+.gallery-item:hover{
+
+    transform:scale(1.04);
+
+    box-shadow:
+        0 12px 30px
+        rgba(80,70,120,.2);
+
+}
+
+
+/* =========================================
+   ЗУРАГ БАЙХГҮЙ
+========================================= */
+
+.no-gallery{
+
+    grid-column:1/-1;
+
+    text-align:center;
+
+    padding:35px;
+
+    background:#f7f3ff;
+
+    border-radius:20px;
+
+    color:#8b819c;
+
+}
+
+
+/* =========================================
+   СЭТГЭГДЛИЙН ХЭСЭГ
+========================================= */
+
+textarea{
+
+    width:100%;
+
+    min-height:140px;
+
+    padding:16px;
+
+    border:
+        2px solid #e5dcf7;
+
+    border-radius:20px;
+
+    background:#fbf9ff;
+
+    color:#4b4260;
+
+    font-family:Arial,sans-serif;
+
+    font-size:16px;
+
+    line-height:1.6;
+
+    resize:vertical;
+
+    outline:none;
+
+}
+
+
+textarea:focus{
+
+    border-color:#9c82d0;
+
+    box-shadow:
+        0 0 0 4px
+        rgba(156,130,208,.12);
+
+}
+
+
+.save-btn{
+
+    margin-top:15px;
+
+    padding:12px 25px;
+
+    border:none;
+
+    border-radius:25px;
+
+    background:#7656a8;
+
+    color:white;
+
+    font-size:16px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    transition:.2s;
+
+}
+
+
+.save-btn:hover{
+
+    transform:translateY(-2px);
+
+    box-shadow:
+        0 8px 20px
+        rgba(118,86,168,.25);
+
+}
+
+
+/* =========================================
+   MODAL
+========================================= */
+
+.image-modal{
+
+    display:none;
+
+    position:fixed;
+
+    z-index:9999;
+
+    inset:0;
+
+    background:
+        rgba(15,10,30,.92);
+
+    justify-content:center;
+
+    align-items:center;
+
+    padding:25px;
+
+    backdrop-filter:blur(8px);
+
+}
+
+
+.image-modal.show{
+
+    display:flex;
+
+}
+
+
+.image-modal img{
+
+    max-width:95vw;
+
+    max-height:92vh;
+
+    width:auto;
+
+    height:auto;
+
+    object-fit:contain;
+
+    border-radius:20px;
+
+    border:6px solid white;
+
+    box-shadow:
+        0 20px 70px
+        rgba(0,0,0,.5);
+
+    animation:
+        zoomImage .25s ease;
+
+}
+
+
+@keyframes zoomImage{
+
+    from{
+
+        transform:scale(.7);
+
+        opacity:0;
+
+    }
+
+    to{
+
+        transform:scale(1);
+
+        opacity:1;
+
+    }
+
+}
+
+
+.close-modal{
+
+    position:absolute;
+
+    top:20px;
+
+    right:25px;
+
+    width:50px;
+
+    height:50px;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:white;
+
+    color:#7656a8;
+
+    font-size:30px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    z-index:10000;
+
+}
+
+
+/* =========================================
+   FOOTER
+========================================= */
+
+footer{
+
+    text-align:center;
+
+    padding:30px;
+
+    color:#8b819c;
+
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media(max-width:700px){
+
+    .container{
+
+        width:94%;
+
+    }
+
+
+    .card{
+
+        padding:18px;
+
+    }
+
+
+    .student-header{
+
+        gap:15px;
+
+        padding:18px;
+
+    }
+
+
+    .profile-photo{
+
+        width:95px;
+
+        height:95px;
+
+        border-width:5px;
+
+    }
+
+
+    .greeting{
+
+        font-size:15px;
+
+    }
+
+
+    .student-name{
+
+        font-size:23px;
+
+    }
+
+
+    .student-school{
+
+        font-size:14px;
+
+    }
+
+
+    .profession-image{
+
+        width:100%;
+
+        height:320px;
+
+    }
+
+
+    .profession-caption{
+
+        font-size:21px;
+
+    }
+
+
+    .gallery{
+
+        grid-template-columns:
+            repeat(2,1fr);
+
+        gap:10px;
+
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================================
+     ХӨДӨЛГӨӨНТ BACKGROUND
+========================================= -->
+
+<div class="floating-decoration"
+     style="
+        left:5%;
+        font-size:22px;
+        animation-duration:13s;
+        animation-delay:0s;
+     ">
+    💜
+</div>
+
+
+<div class="floating-decoration"
+     style="
+        left:18%;
+        font-size:16px;
+        animation-duration:17s;
+        animation-delay:3s;
+     ">
+    ✨
+</div>
+
+
+<div class="floating-decoration"
+     style="
+        left:32%;
+        font-size:20px;
+        animation-duration:15s;
+        animation-delay:6s;
+     ">
+    💕
+</div>
+
+
+<div class="floating-decoration"
+     style="
+        left:48%;
+        font-size:14px;
+        animation-duration:19s;
+        animation-delay:2s;
+     ">
+    ⭐
+</div>
+
+
+<div class="floating-decoration"
+     style="
+        left:62%;
+        font-size:22px;
+        animation-duration:14s;
+        animation-delay:5s;
+     ">
+    💙
+</div>
+
+
+<div class="floating-decoration"
+     style="
+        left:76%;
+        font-size:17px;
+        animation-duration:18s;
+        animation-delay:1s;
+     ">
+    ✨
+</div>
+
+
+<div class="floating-decoration"
+     style="
+        left:90%;
+        font-size:21px;
+        animation-duration:16s;
+        animation-delay:7s;
+     ">
+    💗
+</div>
+
+
+<!-- =========================================
+     NAVBAR
+========================================= -->
+
+<div class="navbar">
+
+    <a href="index.html">
+        💙 8Б АНГИ
+    </a>
+
+    <a href="index.html">
+        ← Буцах
+    </a>
+
+</div>
+
+
+
+<div class="container">
+
+
+<!-- =========================================
+     СУРАГЧИЙН МЭДЭЭЛЭЛ
+========================================= -->
+
+<div class="card">
+
+    <div class="student-header">
+
+        <img
+            id="profilePhoto"
+            class="profile-photo"
+            src=""
+            alt="Сурагчийн зураг"
+        >
+
+
+        <div class="student-text">
+
+            <div class="greeting">
+
+                Сайн байна уу? 👋
+
+            </div>
+
+
+            <div class="student-name">
+
+                8Б ангийн сурагч
+                <span id="studentName"></span>
+
+            </div>
+
+
+            <div class="student-school">
+
+                🏫 Нийслэлийн ерөнхий боловсролын
+                48-р сургууль
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- =========================================
+     МИНИЙ ИРЭЭДҮЙ
+========================================= -->
+
+<div class="card">
+
+    <h2 class="section-title">
+
+        🚀 Миний ирээдүй
+
+    </h2>
+
+
+    <p class="section-subtitle">
+
+        Ирээдүйд би хэн болох вэ? ✨
+
+    </p>
+
+
+    <div class="profession-box">
+
+        <img
+            id="professionImage"
+            class="profession-image"
+            src=""
+            alt="Ирээдүйн мэргэжил"
+        >
+
+
+        <div
+            id="professionCaption"
+            class="profession-caption">
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- =========================================
+     МИНИЙ ЗУРГИЙН ЦОМГИЙН ХЭСЭГ
+========================================= -->
+
+<div class="card">
+
+    <h2 class="gallery-title">
+
+        📸 Миний зургийн цомог
+
+    </h2>
+
+
+    <p class="gallery-subtitle">
+
+        Миний дурсамжууд 💕
+
+    </p>
+
+
+    <div
+        id="gallery"
+        class="gallery">
+    </div>
+
+</div>
+
+
+
+<!-- =========================================
+     СЭТГЭГДЛИЙН ХЭСЭГ
+========================================= -->
+
+<div class="card">
+
+    <h2 class="section-title">
+
+        💌 Миний сайн болон давуу талыг бичээрэй?
+
+    </h2>
+
+
+    <p class="section-subtitle">
+
+        Надад урам өгөх сайхан үгээ
+        үлдээгээрэй 💕
+
+    </p>
+
+
+    <textarea
+        id="parentComment"
+        placeholder="Энд сэтгэгдлээ бичнэ үү...">
+    </textarea>
+
+
+    <button
+        class="save-btn"
+        onclick="saveComment()">
+
+        💾 Илгээх
+
+    </button>
+
+</div>
+
+
+</div>
+
+
+
+<!-- =========================================
+     FOOTER
+========================================= -->
+
+<footer>
+
+    © 2026 | 8Б анги | 48-р сургууль 💙
+
+</footer>
+
+
+
+<!-- =========================================
+     ЗУРАГ ТОМРУУЛАХ MODAL
+========================================= -->
+
+<div
+    id="imageModal"
+    class="image-modal">
+
+
+    <button
+        id="closeModal"
+        class="close-modal">
+
+        ×
+
+    </button>
+
+
+    <img
+        id="modalImage"
+        src=""
+        alt="Томруулсан зураг">
+
+</div>
+
+
+
+<script>
+
+
+/* =========================================
+   СУРАГЧДЫН МЭДЭЭЛЭЛ
+========================================= */
+
+const students = [
+
+    {
+        id:1,
+        name:"Б.Аззаяа",
+        register:"УЗ13280665",
+        profession:"Эмч"
+    },
+
+    {
+        id:2,
+        name:"Э.Аззаяа",
+        register:"УЛ13213163",
+        profession:"Инженер"
+    },
+
+    {
+        id:3,
+        name:"М.Амарзаяа",
+        register:"УА13260181",
+        profession:"Архитектор"
+    },
+
+    {
+        id:4,
+        name:"П.Амин-Эрдэнэ",
+        register:"УЗ13272401",
+        profession:"Программ хангамжийн инженер"
+    },
+
+    {
+        id:5,
+        name:"А.Аминсүлд",
+        register:"УЖ13241691",
+        profession:"Эмч"
+    },
+
+    {
+        id:6,
+        name:"Б.Ачлалтэрдэнэ",
+        register:"УК13222295",
+        profession:"Инженер"
+    },
+
+    {
+        id:7,
+        name:"М.Батхишиг",
+        register:"УО13321961",
+        profession:"Багш"
+    },
+
+    {
+        id:8,
+        name:"Л.Билгүүн",
+        register:"УА13242952",
+        profession:"Тамирчин"
+    },
+
+    {
+        id:9,
+        name:"Б.Гүнтэнгис",
+        register:"РЕ13271015",
+        profession:"Эмч"
+    },
+
+    {
+        id:10,
+        name:"Б.Дөлгөөн",
+        register:"УФ13301045",
+        profession:"Архитектор"
+    },
+
+    {
+        id:11,
+        name:"Э.Мандахнар",
+        register:"УУ13271964",
+        profession:"Инженер"
+    },
+
+    {
+        id:12,
+        name:"Э.Марал",
+        register:"УК13210587",
+        profession:"Эмч"
+    },
+
+    {
+        id:13,
+        name:"Ч.Минж",
+        register:"УЛ13291467",
+        profession:"Дизайнер"
+    },
+
+    {
+        id:14,
+        name:"А.Мөнхтөр",
+        register:"УЦ13240115",
+        profession:"Программ хангамжийн инженер"
+    },
+
+    {
+        id:15,
+        name:"Б.Мөрөн",
+        register:"УЦ13251315",
+        profession:"Эмч"
+    },
+
+    {
+        id:16,
+        name:"Д.Намуундарь",
+        register:"УК13261523",
+        profession:"Багш"
+    },
+
+    {
+        id:17,
+        name:"Б.Нандин-Эрдэнэ",
+        register:"УА13302482",
+        profession:"Архитектор"
+    },
+
+    {
+        id:18,
+        name:"Р.Нандинбилэг",
+        register:"УХ13322827",
+        profession:"Эмч"
+    },
+
+    {
+        id:19,
+        name:"Н.Номинжин",
+        register:"УК13282127",
+        profession:"Дизайнер"
+    },
+
+    {
+        id:20,
+        name:"Ж.Оразалы",
+        register:"УК13271076",
+        profession:"Инженер"
+    },
+
+    {
+        id:21,
+        name:"Т.Отгонбаатар",
+        register:"УА13220490",
+        profession:"Тамирчин"
+    },
+
+    {
+        id:22,
+        name:"Т.Руслан",
+        register:"УЛ13252193",
+        profession:"Инженер"
+    },
+
+    {
+        id:23,
+        name:"Б.Сайхансувд",
+        register:"АИ13242901",
+        profession:"Эмч"
+    },
+
+    {
+        id:24,
+        name:"М.Төгсбаатар",
+        register:"УЛ13282935",
+        profession:"Архитектор"
+    },
+
+    {
+        id:25,
+        name:"Б.Төгсбилиг",
+        register:"УА12301631",
+        profession:"Программ хангамжийн инженер"
+    },
+
+    {
+        id:26,
+        name:"А.Түвшинбаатар",
+        register:"УВ13291896",
+        profession:"Эмч"
+    },
+
+    {
+        id:27,
+        name:"О.Түвшинжаргал",
+        register:"УА13282997",
+        profession:"Багш"
+    },
+
+    {
+        id:28,
+        name:"Ц.Түвшинтулга",
+        register:"УТ13241933",
+        profession:"Инженер"
+    },
+
+    {
+        id:29,
+        name:"Н.Тэмүүлэн",
+        register:"УЦ13231333",
+        profession:"Тамирчин"
+    },
+
+    {
+        id:30,
+        name:"Д.Тэнүүн",
+        register:"МУ13290355",
+        profession:"Эмч"
+    },
+
+    {
+        id:31,
+        name:"Э.Тэнүүн",
+        register:"УХ13241804",
+        profession:"Дизайнер"
+    },
+
+    {
+        id:32,
+        name:"Б.Хад",
+        register:"УЧ13281294",
+        profession:"Инженер"
+    },
+
+    {
+        id:33,
+        name:"Л.Халиун",
+        register:"УК13250619",
+        profession:"Эмч"
+    },
+
+    {
+        id:34,
+        name:"А.Хантай",
+        register:"НР13231416",
+        profession:"Архитектор"
+    },
+
+    {
+        id:35,
+        name:"Ш.Хулан",
+        register:"УК13282623",
+        profession:"Багш"
+    },
+
+    {
+        id:36,
+        name:"Ба.Цэлмэг",
+        register:"ЩК13240213",
+        profession:"Эмч"
+    },
+
+    {
+        id:37,
+        name:"Би.Цэлмэг",
+        register:"УЦ13281015",
+        profession:"Дизайнер"
+    },
+
+    {
+        id:38,
+        name:"А.Шүүдэр",
+        register:"УК13301925",
+        profession:"Инженер"
+    },
+
+    {
+        id:39,
+        name:"Т.Энэрэл",
+        register:"УХ13240105",
+        profession:"Эмч"
+    },
+
+    {
+        id:40,
+        name:"Н.Эрдэнэ",
+        register:"УК13220350",
+        profession:"Программ хангамжийн инженер"
+    }
+
+];
+
+
+
+/* =========================================
+   URL-ЭЭС СУРАГЧ ОЛОХ
+========================================= */
+
+const params =
+    new URLSearchParams(
+        window.location.search
+    );
+
+
+const id =
+    Number(
+        params.get("id")
+    );
+
+
+const key =
+    params.get("key");
+
+
+const student =
+    students.find(
+
+        s =>
+
+            s.id === id &&
+
+            s.register.toUpperCase()
+            ===
+            String(key).toUpperCase()
+
+    );
+
+
+
+/* =========================================
+   СУРАГЧ ОЛДОХГҮЙ
+========================================= */
+
+if(!student){
+
+    document.body.innerHTML = `
+
+        <div style="
+            text-align:center;
+            padding:100px 20px;
+            font-family:Arial;
+        ">
+
+            <h1>
+                ❌ Мэдээлэл олдсонгүй
+            </h1>
+
+            <p style="
+                margin-top:15px;
+            ">
+                Холбоос буруу байна.
+            </p>
+
+            <a
+                href="index.html"
+                style="
+                    display:inline-block;
+                    margin-top:20px;
+                    padding:12px 25px;
+                    background:#7656a8;
+                    color:white;
+                    text-decoration:none;
+                    border-radius:25px;
+                "
+            >
+                ← Буцах
+            </a>
+
+        </div>
+
+    `;
+
+    throw new Error(
+        "Student not found"
+    );
+
+}
+
+
+
+/* =========================================
+   НЭР
+========================================= */
+
+document.getElementById(
+    "studentName"
+).textContent =
+    student.name;
+
+
+
+/* =========================================
+   МЭРГЭЖЛИЙН НЭР
+========================================= */
+
+document.getElementById(
+    "professionCaption"
+).textContent =
+    student.profession;
+
+
+
+/* =========================================
+   ЗУРАГ ОЛОХ FUNCTION
+
+   PNG
+   JPG
+   JPEG
+
+   бүгдийг шалгана
+========================================= */
+
+function findImage(
+
+    baseName,
+
+    callback
+
+){
+
+    const extensions = [
+
+        "png",
+        "jpg",
+        "jpeg",
+
+        "PNG",
+        "JPG",
+        "JPEG"
+
+    ];
+
+
+    let index = 0;
+
+
+    function check(){
+
+        if(
+            index >=
+            extensions.length
+        ){
+
+            callback(null);
+
+            return;
+
+        }
+
+
+        const path =
+            `students/${baseName}.${extensions[index]}`;
+
+
+        const test =
+            new Image();
+
+
+        test.onload =
+            function(){
+
+                callback(path);
+
+            };
+
+
+        test.onerror =
+            function(){
+
+                index++;
+
+                check();
+
+            };
+
+
+        test.src =
+            path;
+
+    }
+
+
+    check();
+
+}
+
+
+
+/* =========================================
+   НҮҮРНИЙ ЗУРАГ
+
+   ДАРАХАД ТОМРОХГҮЙ
+========================================= */
+
+findImage(
+
+    `${student.id}nuur`,
+
+    function(path){
+
+        const img =
+            document.getElementById(
+                "profilePhoto"
+            );
+
+
+        if(path){
+
+            img.src =
+                path;
+
+        }
+
+        else{
+
+            img.style.display =
+                "none";
+
+        }
+
+    }
+
+);
+
+
+
+/* =========================================
+   МЭРГЭЖЛИЙН ЗУРАГ
+
+   ДАРАХАД ТОМОРНО
+========================================= */
+
+findImage(
+
+    `${student.id}mergejil`,
+
+    function(path){
+
+        const img =
+            document.getElementById(
+                "professionImage"
+            );
+
+
+        if(path){
+
+            img.src =
+                path;
+
+
+            img.onclick =
+                function(){
+
+                    openImageModal(
+                        path
+                    );
+
+                };
+
+        }
+
+        else{
+
+            img.style.display =
+                "none";
+
+
+            document.getElementById(
+                "professionCaption"
+            ).style.display =
+                "none";
+
+        }
+
+    }
+
+);
+
+
+
+/* =========================================
+   ЦОМГИЙН ДУГААР
+
+   1-р хүүхэд  → 1000–1050
+   2-р хүүхэд  → 2000–2050
+   3-р хүүхэд  → 3000–3050
+
+   ...
+
+   40-р хүүхэд → 40000–40050
+========================================= */
+
+const gallery =
+    document.getElementById(
+        "gallery"
+    );
+
+
+const galleryStart =
+    student.id * 1000;
+
+
+const galleryEnd =
+    galleryStart + 50;
+
+
+const galleryExtensions = [
+
+    "jpg",
+    "jpeg",
+    "png",
+
+    "JPG",
+    "JPEG",
+    "PNG"
+
+];
+
+
+let galleryCount = 0;
+
+
+
+/* =========================================
+   ЦОМГИЙН НЭГ ЗУРАГ ШАЛГАХ
+========================================= */
+
+function loadGalleryImage(
+
+    number,
+
+    extensionIndex = 0
+
+){
+
+    if(
+
+        extensionIndex >=
+        galleryExtensions.length
+
+    ){
+
+        return;
+
+    }
+
+
+    const extension =
+        galleryExtensions[
+            extensionIndex
+        ];
+
+
+    const path =
+        `tsomog/${number}.${extension}`;
+
+
+    const testImage =
+        new Image();
+
+
+    testImage.onload =
+        function(){
+
+            const img =
+                document.createElement(
+                    "img"
+                );
+
+
+            img.className =
+                "gallery-item";
+
+
+            img.src =
+                path;
+
+
+            img.alt =
+                `${student.name} - ${number}`;
+
+
+            img.onclick =
+                function(){
+
+                    openImageModal(
+                        path
+                    );
+
+                };
+
+
+            gallery.appendChild(
+                img
+            );
+
+
+            galleryCount++;
+
+        };
+
+
+    testImage.onerror =
+        function(){
+
+            loadGalleryImage(
+
+                number,
+
+                extensionIndex + 1
+
+            );
+
+        };
+
+
+    testImage.src =
+        path;
+
+}
+
+
+
+/* =========================================
+   ЦОМГИЙН БҮХ ДУГААРЫГ ШАЛГАХ
+========================================= */
+
+for(
+
+    let number =
+        galleryStart;
+
+    number <=
+        galleryEnd;
+
+    number++
+
+){
+
+    loadGalleryImage(
+        number
+    );
+
+}
+
+
+
+/* =========================================
+   ЦОМГИЙН ЗУРАГ БАЙХГҮЙ
+========================================= */
+
+setTimeout(
+
+    function(){
+
+        if(
+            galleryCount === 0
+        ){
+
+            gallery.innerHTML = `
+
+                <div class="no-gallery">
+
+                    📷
+
+                    Одоогоор зураг
+                    оруулаагүй байна.
+
+                </div>
+
+            `;
+
+        }
+
+    },
+
+    2000
+
+);
+
+
+
+/* =========================================
+   ЗУРАГ ТОМРУУЛАХ MODAL
+========================================= */
+
+const imageModal =
+    document.getElementById(
+        "imageModal"
+    );
+
+
+const modalImage =
+    document.getElementById(
+        "modalImage"
+    );
+
+
+const closeModal =
+    document.getElementById(
+        "closeModal"
+    );
+
+
+
+function openImageModal(src){
+
+    modalImage.src =
+        src;
+
+
+    imageModal.classList.add(
+        "show"
+    );
+
+
+    document.body.style.overflow =
+        "hidden";
+
+}
+
+
+
+function closeImageModal(){
+
+    imageModal.classList.remove(
+        "show"
+    );
+
+
+    modalImage.src =
+        "";
+
+
+    document.body.style.overflow =
+        "";
+
+}
+
+
+
+closeModal.onclick =
+    closeImageModal;
+
+
+
+imageModal.onclick =
+    function(e){
+
+        if(
+            e.target ===
+            imageModal
+        ){
+
+            closeImageModal();
+
+        }
+
+    };
+
+
+
+/* ESC ДАРАХАД ХААГДАНА */
+
+document.addEventListener(
+
+    "keydown",
+
+    function(e){
+
+        if(
+            e.key ===
+            "Escape"
+        ){
+
+            closeImageModal();
+
+        }
+
+    }
+
+);
+
+
+
+/* =========================================
+   СЭТГЭГДЭЛ
+
+   ОДОО LOCALSTORAGE АШИГЛАЖ БАЙНА
+========================================= */
+
+const commentBox =
+    document.getElementById(
+        "parentComment"
+    );
+
+
+const commentKey =
+    `parentComment_${student.id}`;
+
+
+/* ӨМНӨ ХАДГАЛСАН СЭТГЭГДЛИЙГ
+   ДАХИН ХАРУУЛНА */
+
+commentBox.value =
+    localStorage.getItem(
+        commentKey
+    ) || "";
+
+
+
+/* =========================================
+   СЭТГЭГДЭЛ ХАДГАЛАХ
+========================================= */
+
+function saveComment(){
+
+    localStorage.setItem(
+
+        commentKey,
+
+        commentBox.value
+
+    );
+
+
+    alert(
+        "💙 Баярлалаа."
+    );
+
+}
+
+</script>
+
+
+</body>
+
+</html>
+```
